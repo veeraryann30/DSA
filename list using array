@@ -1,5 +1,52 @@
+
 #include<stdio.h>
+#define MAX 100
+int list[MAX];
+//int data;
+
+int n=0;
+void insertAtBeg(int value){
+  if(n == MAX){
+    printf("list is full !!!!\n");
+    return;
+}
+for(int i = n-1; i>=0; i--){
+  list[i+1]=list[i];
+
+}
+list[0]= value;
+n++;
+printf("Element inserted !!!!\n");
+}
+void insertAtPosition(int pos, int value){
+if(n== MAX){
+  printf("List is full!!!\n");
+
+}
+else if(pos<0 || pos >=n){
+  printf("Invalid position!!!\n");
+
+}
+else{
+  for(int i=n-1; i>=pos; i--){
+    list[i+1] = list[i];
+  }
+  list[pos]=value;
+}
+}
+void displayList(){
+  if (n==0){
+    printf("List is empty!!!\n");
+    return ;
+  }
+  for(int i = 0; i<n; i++){
+    printf("%d\t", list[i]);
+  }
+  printf("\n");
+
+}
 int main(){
+  int data;
 while(1){
         printf("1. Insert In Beginning\n");
          printf("2. Insert At End\n");
@@ -12,15 +59,20 @@ while(1){
                                    printf("9. Update Element In List\n");
                                      printf("10. Sort Element Of List\n");
                                        printf("11. Exit\n");
-                                       int choice;
+                                       int choice, data;
                                        printf("Enter Choice:");
                                        scanf("%d",&choice);
                                        switch(choice){
                                         case 1:
+                                        printf("Enter data:");
+                                        scanf("%d",&data);
+                                        insertAtBeg(data);
+                                        
+
                                         break;
                                         case 2:
                                         break;
-                                        case 3;
+                                        case 3:
                                         break;
                                         case 4:
                                         break;
@@ -29,6 +81,7 @@ while(1){
                                         case 6:
                                         break;
                                         case 7:
+                                        displayList();
                                         break;
                                         case 8:
                                         break;
@@ -38,11 +91,16 @@ while(1){
                                         break;
                                         case 11:
                                         break;
+                                        default:
+                                        printf("Invalid Choice!!!\n");
+
                                         
-                                       
+                                        
                                         
                                         
                                        }
+                                       printf("\n\n");
+
 }
 
 return 0;
